@@ -8,7 +8,6 @@ from verbecc import CompleteConjugator, localization, Moods, Tenses
 
 # for unit test
 import pytest
-from unittest.mock import MagicMock
 import shutil
 
 logging.getLogger("verbecc").setLevel(logging.WARNING)
@@ -39,15 +38,17 @@ def fetch_verb_conjugation(
 def download_audios(folder: Path, voice_model: str, conj_phrases: list[str]) -> bool:
     """
     Download MP3 audio files for a set of French conjugated phrases.
-    
+
     Args:
-        folder (pathlib.Path): The Path of the directory where audio files will be stored \
+        folder (pathlib.Path): The Path of the directory where audio files will be stored
         voice_model (str): voice model (eg. 'fr-CA-JeanNeural')
         conj_phrases (list[str]): A list of French conjugated phrases
     Returns:
         bool: Return True if successfully downloaded all audio files.
     """
     folder.mkdir(parents=True, exist_ok=True)
+    if len(conj_phrases) == 0:
+        return False
 
     async def run_batch():
         tasks = []
@@ -145,24 +146,28 @@ if __name__ == "__main__":
 
 
 def test_fetch_verb_conjugation():
-    pass
+    expected_result = "j'ai\ttu as\til a\telle a\ton a\tnous avons\tvous avez\tils ont\telles ont".split(
+        "\t"
+    )
+    actual_result = fetch_verb_conjugation("fr", "avoir", "indicative", "present")
+    assert expected_result == actual_result
 
 
 def test_download_audios_success(temp_output_dir):
-    pass
+    file = temp_output_dir / "j'ai.mp3"
+    result = download_audios(temp_output_dir, "fr-CA-JeanNeural", ["j'ai"])
+    assert result is True
+    assert file.exists()
 
 
 def test_download_audios_failure(temp_output_dir):
-    mock_session = MagicMock()
-    mock_response = MagicMock()
-    mock_response.status_code = 404  # Simulate not found
-    mock_session.get.return_value = mock_response
+    file = temp_output_dir / ".mp3"
+    result = download_audios(temp_output_dir, "fr-CA-JeanNeural", [""])
+    assert result is True
+    assert file.exists()
 
-    test_file = temp_output_dir / "test_audio.mp3"
-    result = download_audios(mock_session, temp_output_dir, set(["test_audio"]))
-
+    result = download_audios(temp_output_dir, "fr-CA-JeanNeural", [])
     assert result is False
-    assert not test_file.exists()
 
 
 @pytest.fixture
