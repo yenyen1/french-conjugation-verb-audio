@@ -32,7 +32,7 @@ dev = [
 ]
 
 [project.urls]
-Repository = "https://github.com/....git"
+Repository = "https://github.com/yenyen1/french-conjugation-verb-audio"
 
 [project.scripts]
-fr_audio = "fr_audio:fr_verb_audio:main"
+fr_audio = "src:fr_verb_audio:fr_verb_audio:main"
