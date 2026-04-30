@@ -1,0 +1,28 @@
+# VScode
+.vscode/
+
+# Mac
+.DS_Store
+
+# Python
+__pycache__/
+.ruff_cache/
+.pytest_cache/
+*.pyc
+*.pyo
+*.log
+
+# virtual env
+venv/
+venv_verbecc/
+
+
+# TTS models
+*.wav
+*.mp3
+*.pth
+*.pt
+.cache/
+
+# pre-commit hook
+.pre-commit

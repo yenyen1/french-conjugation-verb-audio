@@ -10,7 +10,7 @@ authors = [
     { name = "Yenyen Wang", email = "wangyenyen.st00g@g2.nctu.edu.tw" }
 ]
 readme = "README.md"
-requires-python = ">= 3.14"
+requires-python = ">= 3.9"
 dependencies = [
     "verbecc>=2.0,<3.0",
     "edge-tts>=7.2,<8.0"
@@ -29,6 +29,7 @@ test = ["pytest"]
 dev = [
     "pytest",
     "ruff",
+    "pre-commit"
 ]
 
 [project.urls]
