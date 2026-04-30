@@ -21,7 +21,7 @@ classifiers = [
   "Environment :: Console",
   "Topic :: Utilities"
 ]
-license = "MIT"
+license = "LGPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
 
 [project.optional-dependencies]
