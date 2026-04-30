@@ -4,7 +4,7 @@ import logging
 from pathlib import Path
 
 import edge_tts
-from verbecc import CompleteConjugator, localization, Moods, Tenses
+from verbecc import CompleteConjugator, Moods, Tenses
 
 # for unit test
 import pytest
