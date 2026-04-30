@@ -1,5 +1,8 @@
 # Download French Verb Conjugation Audios
 
+[![PyPI - Version](https://img.shields.io/pypi/v/fr-audio.svg)](https://pypi.org/project/fr-audio)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/fr-audio.svg)](https://pypi.org/project/fr-audio)
+
 A CLI tool for downloading MP3 audio of French verb conjugations. 
 Provide the infinitive form of a verb and use options to specify which tenses to download. 
 By default, only the infinitive form audio is downloaded.

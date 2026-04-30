@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fr-audio"  
-version = "0.1.0"
+version = "0.1.1"
 description = "Provide a French infinitive verb and specify desired tense(s), the tool automatically downloads audio files for all person-specific conjugations"
 authors = [
     { name = "Yenyen Wang", email = "wangyenyen.st00g@g2.nctu.edu.tw" }
@@ -16,10 +16,15 @@ dependencies = [
     "edge-tts>=7.2,<8.0"
 ]
 classifiers = [
-  "Programming Language :: Python :: 3",
-  "Development Status :: 4 - Beta",
-  "Environment :: Console",
-  "Topic :: Utilities"
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Environment :: Console",
+    "Topic :: Utilities"
 ]
 license = "LGPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
@@ -38,3 +43,6 @@ Issues = "https://github.com/yenyen1/french-conjugation-verb-audio/issues"
 
 [project.scripts]
 fr-audio = "fr_audio.main_cli:main"
+
+[tool.hatch.build.targets.wheel]
+exclude = ["tests/"]
