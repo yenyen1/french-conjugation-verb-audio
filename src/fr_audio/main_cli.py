@@ -1,10 +1,12 @@
+from .config import Model, Moods, Tenses
+
 import argparse
 import asyncio
 import logging
 from pathlib import Path
 
 import edge_tts
-from verbecc import CompleteConjugator, Moods, Tenses
+from verbecc import CompleteConjugator  # , Moods, Tenses
 
 logging.getLogger("verbecc").setLevel(logging.WARNING)
 
@@ -85,40 +87,40 @@ def main():
 
     args = parse.parse_args()
 
-    lang = "fr"
+    lang = Model.Language
     infinitive = args.inf_verb
-    voice_model = "fr-CA-JeanNeural"
+    voice_model = Model.VoiceModel
     folder = Path(args.inf_verb)
 
     download_audios(folder / "infinitif_présent", voice_model, [infinitive])
 
     if args.present:
-        mood, tense = Moods.fr.Indicatif, Tenses.fr.Présent
+        mood, tense = Moods.Indicatif, Tenses.Présent
         result = fetch_verb_conjugation(lang, infinitive, mood, tense)
         sub_folder = folder / f"{mood}-{tense}"
         download_audios(sub_folder, voice_model, result)
     if args.future:
-        mood, tense = Moods.fr.Indicatif, Tenses.fr.FuturSimple
+        mood, tense = Moods.Indicatif, Tenses.FuturSimple
         result = fetch_verb_conjugation(lang, infinitive, mood, tense)
         sub_folder = folder / f"{mood}-{tense}"
         download_audios(sub_folder, voice_model, result)
     if args.past:
-        mood, tense = Moods.fr.Indicatif, Tenses.fr.PasséComposé
+        mood, tense = Moods.Indicatif, Tenses.PasséComposé
         result = fetch_verb_conjugation(lang, infinitive, mood, tense)
         sub_folder = folder / f"{mood}-{tense}"
         download_audios(sub_folder, voice_model, result)
     if args.past_simple:
-        mood, tense = Moods.fr.Indicatif, Tenses.fr.PasséSimple
+        mood, tense = Moods.Indicatif, Tenses.PasséSimple
         result = fetch_verb_conjugation(lang, infinitive, mood, tense)
         sub_folder = folder / f"{mood}-{tense}"
         download_audios(sub_folder, voice_model, result)
     if args.conditional:
-        mood, tense = Moods.fr.Conditionnel, Tenses.fr.Présent
+        mood, tense = Moods.Conditionnel, Tenses.Présent
         result = fetch_verb_conjugation(lang, infinitive, mood, tense)
         sub_folder = folder / f"{mood}-{tense}"
         download_audios(sub_folder, voice_model, result)
     if args.imperative:
-        mood, tense = Moods.fr.Imperatif, Tenses.fr.ImperatifPrésent
+        mood, tense = Moods.Imperatif, Tenses.ImperatifPrésent
         result = fetch_verb_conjugation(lang, infinitive, mood, tense)
         sub_folder = folder / f"{mood}-{tense}"
         download_audios(sub_folder, voice_model, result)
