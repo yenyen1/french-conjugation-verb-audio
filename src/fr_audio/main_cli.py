@@ -2,13 +2,22 @@ from .config import Model, Moods, Tenses
 
 import argparse
 import asyncio
-import logging
 from pathlib import Path
-
 import edge_tts
-from verbecc import CompleteConjugator  # , Moods, Tenses
+# import logging
 
-logging.getLogger("verbecc").setLevel(logging.WARNING)
+# logging.disable(logging.INFO)
+from verbecc import CompleteConjugator  # , Moods, Tenses
+# logging.disable(logging.NOTSET)
+
+# for name, logger in logging.Logger.manager.loggerDict.items():
+#     if name.startswith("verbecc"):
+#         if isinstance(logger, logging.Logger):
+#             logger.setLevel(logging.ERROR)
+#             logger.propagate = False
+#             for handler in logger.handlers[:]:
+#                 handler.close()
+#                 logger.removeHandler(handler)
 
 
 def fetch_verb_conjugation(

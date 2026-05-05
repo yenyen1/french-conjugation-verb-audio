@@ -24,6 +24,7 @@ Currently supported common tenses include: indicatif présent, indicatif futur s
 
 ## Usage
 
+
 ```
 # Print help
 fr-audio --help
@@ -38,6 +39,8 @@ fr-audio aller --present
 fr-audio aller --present --past --past_simple --future
 
 ```
+
+*Note*: The first run may take about a minute to download the model.
 
 ## Credits
 This tool uses the following Python libraries:
