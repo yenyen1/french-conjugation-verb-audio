@@ -1,4 +1,6 @@
-from src.fr_audio.main_cli import fetch_verb_conjugation, download_audios
+from fr_audio.audio import download_audios
+from fr_audio.conjugation import fetch_verb_conjugation
+
 import shutil
 from pathlib import Path
 
