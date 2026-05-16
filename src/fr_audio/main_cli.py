@@ -1,76 +1,9 @@
-from .config import Model, Moods, Tenses
+from fr_audio.config import Model, Moods, Tenses
+from fr_audio.audio import download_audios
+from fr_audio.conjugation import fetch_verb_conjugation
 
 import argparse
-import asyncio
 from pathlib import Path
-import edge_tts
-# import logging
-
-# logging.disable(logging.INFO)
-from verbecc import CompleteConjugator  # , Moods, Tenses
-# logging.disable(logging.NOTSET)
-
-# for name, logger in logging.Logger.manager.loggerDict.items():
-#     if name.startswith("verbecc"):
-#         if isinstance(logger, logging.Logger):
-#             logger.setLevel(logging.ERROR)
-#             logger.propagate = False
-#             for handler in logger.handlers[:]:
-#                 handler.close()
-#                 logger.removeHandler(handler)
-
-
-def fetch_verb_conjugation(
-    lang: str, infinitive: str, mood: str, tense: str
-) -> list[str]:
-    """
-    Fetch a set of French conjugated verb phrases from verbecc. 
-
-    Args:
-        lang (str): language (eg. 'fr', 'es', 'ca', etc.)
-        infinitive (str): infinitive verb
-        mood (str): Grammatical mood (eg. 'indicative', 'imperative', 'conditional', etc.)
-        tense (str): GRammatical tense (eq. 'present', 'past', 'future', etc.)
-    Returns:
-        set[str]: A set of French conjugated verb phrases regarding the tense \
-            or an empty set if the requested tense not found
-    """
-    cc = CompleteConjugator(lang).conjugate(infinitive)
-
-    return [c[0] for c in cc[mood][tense]]
-
-
-def download_audios(folder: Path, voice_model: str, conj_phrases: list[str]) -> bool:
-    """
-    Download MP3 audio files for a set of French conjugated phrases.
-
-    Args:
-        folder (pathlib.Path): The Path of the directory where audio files will be stored
-        voice_model (str): voice model (eg. 'fr-CA-JeanNeural')
-        conj_phrases (list[str]): A list of French conjugated phrases
-    Returns:
-        bool: Return True if successfully downloaded all audio files.
-    """
-    folder.mkdir(parents=True, exist_ok=True)
-    if len(conj_phrases) == 0:
-        return False
-
-    async def run_batch():
-        tasks = []
-        for phrase in conj_phrases:
-            file = folder / f"{phrase.replace(' ', '_')}.mp3"
-            # create tasks
-            tasks.append(edge_tts.Communicate(phrase, voice_model).save(file))
-
-        # run all the tasks at the same time
-        await asyncio.gather(*tasks)
-
-    try:
-        asyncio.run(run_batch())
-        return True
-    except Exception as e:
-        print(f"Error: {e}")
-        return False
 
 
 def main():

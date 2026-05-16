@@ -12,15 +12,15 @@ Currently supported common tenses include: indicatif présent, indicatif futur s
 ## Installation
 
 - From PyPI
-```
+    ```
     pip install fr-audio
-```
+    ```
 - From Git
-```
+    ```
     git clone https://github.com/yenyen1/french-conjugation-verb-audio.git 
     cd french-conjugation-verb-audio 
     pip install .
-```
+    ``` 
 
 ## Usage
 
