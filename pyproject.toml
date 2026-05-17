@@ -38,8 +38,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yenyen1/french-conjugation-verb-audio"
-Issues = "https://github.com/yenyen1/french-conjugation-verb-audio/issues" 
+Homepage = "https://github.com/yenyen1/French-learning-audio"
+Issues = "https://github.com/yenyen1/French-learning-audio/issues" 
 
 [project.scripts]
 fr-audio = "fr_audio.main_cli:main"
