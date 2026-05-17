@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fr-audio"  
-version = "0.2.1"
+version = "0.3.0"
 description = "Provide a French infinitive verb and specify desired tense(s), the tool automatically downloads audio files for all person-specific conjugations"
 authors = [
     { name = "Yenyen Wang", email = "wangyenyen.st00g@g2.nctu.edu.tw" }
