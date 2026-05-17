@@ -1,4 +1,4 @@
-# Download French Verb Conjugation Audios
+# Download French Learning Audio
 
 [![PyPI - Version](https://img.shields.io/pypi/v/fr-audio.svg)](https://pypi.org/project/fr-audio)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/fr-audio.svg)](https://pypi.org/project/fr-audio)
@@ -46,7 +46,7 @@ fr-audio verb aller --present
 fr-audio verb aller --present --past --past_simple --future
 ```
 
-## Usage: Download verb conjugation audio
+## Usage: Download French sentence audio
 
 **Note**: The first run may take about a minute to download the model.
 
@@ -55,7 +55,7 @@ fr-audio verb aller --present --past --past_simple --future
 fr-audio sentence --help
 ```
 
-### Download French sentence audio
+### Download sentence audio
 ```
 fr-audio sentence --sentence "Vous devez remplir un formulaire d'inscription."
 ```
