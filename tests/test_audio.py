@@ -1,18 +1,9 @@
-from fr_audio.audio import download_audios
-from fr_audio.conjugation import fetch_verb_conjugation
+from fr_audio.audio import download_audios, download_audio_with_specified_filename
 
 import shutil
 from pathlib import Path
 
 import pytest
-
-
-def test_fetch_verb_conjugation():
-    expected_result = "j'ai\ttu as\til a\telle a\ton a\tnous avons\tvous avez\tils ont\telles ont".split(
-        "\t"
-    )
-    actual_result = fetch_verb_conjugation("fr", "avoir", "indicatif", "présent")
-    assert expected_result == actual_result
 
 
 def test_download_audios_success(temp_output_dir):
@@ -30,6 +21,24 @@ def test_download_audios_failure(temp_output_dir):
 
     result = download_audios(temp_output_dir, "fr-CA-JeanNeural", [])
     assert result is False
+
+
+def test_download_audio_with_specified_filename_failure(temp_output_dir):
+    temp_output_dir.mkdir(parents=True, exist_ok=True)
+    file = temp_output_dir / "test.mp3"
+    result = download_audio_with_specified_filename(file, "fr-CA-JeanNeural", "")
+    assert result is False
+    assert not file.exists()
+
+
+def test_download_audio_with_specified_filename_success(temp_output_dir):
+    temp_output_dir.mkdir(parents=True, exist_ok=True)
+    file = temp_output_dir / "test.mp3"
+    result = download_audio_with_specified_filename(
+        file, "fr-CA-JeanNeural", "Vous devez remplir un formulaire"
+    )
+    assert result is True
+    assert file.exists()
 
 
 @pytest.fixture
