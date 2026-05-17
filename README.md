@@ -43,7 +43,7 @@ fr-audio verb aller --present
 ```
 ### Download multiple tenses 
 ```
-fr-audio verb aller --present --past --past_simple --future
+fr-audio verb aller --present --past --past-simple --future
 ```
 
 ## Usage: Download French sentence audio
